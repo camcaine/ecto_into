@@ -12,6 +12,7 @@ defmodule EctoInto.Mixfile do
      description: description(),
      package: package(),
      deps: deps(),
+     docs: docs(),
      source_url: @github]
   end
 
@@ -19,12 +20,19 @@ defmodule EctoInto.Mixfile do
     [extra_applications: [:logger]]
   end
 
-  defp deps do
-    [{:ex_doc, "~> 0.14", only: :dev, runtime: false}]
-  end
-
   defp description do
     "Ecto extension for managing sequential positioning."
+  end
+
+  defp deps do
+    [{:postgrex, ">= 0.0.0"},
+     {:ecto, "~> 2.1"},
+     {:ex_doc, "~> 0.14", only: :dev, runtime: false}]
+  end
+
+  defp docs do
+    [main: "EctoInto.Position",
+     extras: ["README.md"]]
   end
 
   defp package do
